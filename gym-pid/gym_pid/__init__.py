@@ -1,6 +1,1 @@
-from gym.envs.registration import register
-
-#register(
-#    id='pid-v0',
-#    entry_point='gym_pid.envs: PidEnv'
-#)
+from gym.envs.gym_pid.pid_env import PidEnv
