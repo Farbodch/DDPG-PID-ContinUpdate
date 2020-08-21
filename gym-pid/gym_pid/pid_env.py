@@ -3,7 +3,7 @@
 # a distance 'targetVal' away.
 # Environment's point of action is the object's acceleration, changed only through tweaking PID parameters.
 # Object(*) velocity (v) and object displacement (x) are calculated using Verlet's Algorithm.
-# (*)Ideal refers to a point-object's massless-ness, and omission of any resistance to motion ie. friction, air drag etc.
+# (*)Ideal refers to a point-object's massless-ness, and omission of any resistance to motion ie. friction, drag etc.
 # (*)Object refers to the abstraction of a physical point-object, not a programming abstraction.
 from abc import ABC
 
