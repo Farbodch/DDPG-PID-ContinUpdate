@@ -8,18 +8,18 @@ env = gym.make('pid-v0')
 
 agent = DDPGagent(env, 4, 256, 4)
 noise = OUNoise(4)
-batch_size = 256
+batch_size = 64
 rewards = []
 avgRewards = []
 
-for episode in range(400):
+for episode in range(300):
 
     state = env.reset()
     noise.reset()
     episodeReward = 0
     stepCounter = 0
 
-    for step in range(500):
+    for step in range(400):
         stepCounter += 1
         action = agent.get_action(state)
         action = noise.get_action(action, step)
@@ -29,17 +29,17 @@ for episode in range(400):
         if len(agent.memory) > batch_size:
             agent.update(batch_size)
 
-        if episodeReward < -2000:
-            print('Junk Episode')
-            break
+        # if episodeReward < -1000:
+        #     print('Junk Episode')
+        #     break
 
-        if episode > 200:
-            if episodeReward < -200:
-                break
+        # if episode > 400:
+        #     if episodeReward < -100:
+        #         break
 
-        #   kp = action[0]
-        #   ki = action[1]
-        #   kd = action[2]
+        # kp = action[0]
+        # ki = action[1]
+        # kd = action[2]
 
         if done:
             sys.stdout.write(
@@ -58,7 +58,7 @@ for episode in range(400):
 # plt.plot(rewards)
 plt.plot(avgRewards)
 plt.plot()
-plt.title('DDPG Model 1.1 - Training')
+plt.title('DDPG Model 1.0 - Training')
 plt.xlabel('Episode')
 plt.ylabel('Reward')
 plt.show()
