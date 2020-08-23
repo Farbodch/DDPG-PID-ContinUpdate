@@ -28,14 +28,14 @@ for episode in range(300):
 
         if len(agent.memory) > batch_size:
             agent.update(batch_size)
+        
+        if episodeReward < -1000:
+            print('Junk Episode')
+            break
 
-        # if episodeReward < -1000:
-        #     print('Junk Episode')
-        #     break
-
-        # if episode > 400:
-        #     if episodeReward < -100:
-        #         break
+        if episode > 200:
+            if episodeReward < -100:
+                break
 
         # kp = action[0]
         # ki = action[1]
